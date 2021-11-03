@@ -74,7 +74,11 @@ public class BeerServiceImpl implements BeerService {
                 );
 
                 Set<Temperature> temperatures = new HashSet<>();
-
+                
+                /*
+                    This is necessary because for some reason H2 database doesn't
+                    apply CascadeType of PERSIST
+                */
                 for (MashTemp mt : beers[0].getMethod().getMashTemp()) {
                     Temperature t = new Temperature();
 
